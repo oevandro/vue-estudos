@@ -1,0 +1,47 @@
+<html>
+
+<head>
+
+		<title>VUE.js</title>
+
+		<!-- versão de produção, otimizada para tamanho e velocidade -->
+<script src="vue.js"></script>
+ 
+<link rel="stylesheet" type="text/css" href="style.css">
+ 
+	
+</head>
+
+<body>
+		<div id="app" v-bind:class="{'open': open}"> 
+			<my-nav v-on:toggle="update" :message="message" ></my-nav>
+			<my-aside  :message="message"></my-aside>
+			<my-main v-model="message"></my-main>
+		 </div>
+
+	<script src="mixin.js"></script>
+	<script src="my-nav.js"></script>
+	<script src="my-aside.js"></script>
+	<script src="my-section.js"></script>
+	<script src="my-main.js"></script> 
+
+	<script>
+
+		Vue.config.devtools = true; 
+		
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Olá Vue!',
+		    open: false
+		  },
+		  methods:{
+		  	update (){
+		  		this.open = !this.open
+		  	}
+		  }
+		})
+	</script>
+
+</body>
+</html>
